@@ -1,0 +1,23 @@
+.analytic--container {
+  width: 85vw;
+  height: 100vh;
+  background-color: #ededed;
+  padding: 4em;
+  box-sizing: border-box;
+}
+
+.analytic--container--quizes {
+  margin-top: 2em;
+}
+
+.analytic--container--counters {
+  display: flex;
+  justify-content: space-between;
+}
+
+.analytic--container--quizes--container {
+  margin-top: 1em;
+  display: flex;
+  gap: 0.8em;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,73 @@
+.Authentication {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+}
+
+.Authentication--container--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+  height: 90vh;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+}
+.--authLogo {
+  color: #474444;
+  font-family: Jomhuria;
+  font-size: 6em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+label {
+  color: #474444;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.field-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+}
+
+.AuthButton {
+  width: 274px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #a9bcff;
+  border: none;
+  margin: 1em auto;
+  font-size: 1.3em;
+  color: #474444;
+}
+
+.AuthInput {
+  width: 388px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
+  background: #f4f4f4;
+  border: none;
+}
+
+
+
+.AuthInput.error {
+  outline: 1px solid red;
+  color: red;
+}
+
+.error {
+  color: red;
+}

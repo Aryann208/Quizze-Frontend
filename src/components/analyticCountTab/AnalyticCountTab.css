@@ -1,0 +1,44 @@
+.count--container {
+  background-color: #fff;
+  width: 295px;
+  height: 155px;
+
+  border-radius: 10px;
+  background: #fff;
+}
+.count--container--content {
+  margin: 2em auto;
+  background-color: #fff;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding: 0em 0;
+  border-radius: 10px;
+  background: #fff;
+
+}
+.count--container--content--formatter{  
+  display: inline-block;
+
+  position: relative;
+  }
+
+.count--container p{
+  font-size: 1.8em;
+  font-weight: 600;
+  display: inline-block; /* Make the <p> elements behave like inline elements */
+  vertical-align: baseline;
+
+}
+.count--container span{
+  font-size: 3em;
+  font-weight: 700;
+
+  display: inline-block; /* Make the <p> elements behave like inline elements */
+  vertical-align: baseline;
+}
+.count--container--content--number{
+  margin:0 0.3em
+}

@@ -1,0 +1,10 @@
+.inputbar {
+  width: 100%;
+  padding: 0 1em;
+  border: 0;
+  outline: 0;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+}

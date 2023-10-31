@@ -1,0 +1,210 @@
+.quizcreation--container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 2em;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.quizcreation--container--options {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 1em 0;
+}
+.quizcreation--container--options--buttons {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.option--button {
+  width: 40%;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  outline: 0;
+  border: 0;
+}
+.option--button.selected {
+  background: #60b84b;
+  color: #fff;
+}
+.quizcreation--container--final--buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.option--button--green {
+  width: 40%;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #60b84b;
+  color: #fff;
+  outline: 0;
+  border: 0;
+}
+
+.quizformation--container--questioncircles {
+  display: flex;
+}
+#circle-add-circle-button {
+  height: 100%;
+  width: auto;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  font-size: 3em;
+  font-weight: lighter;
+  box-shadow: none;
+}
+
+.quizformation--container--questioncircle {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 50%;
+  color: #9f9f9f;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  position: relative;
+  border: #9f9f9f 1.5px solid;
+}
+
+.circle-delete-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  color: #9f9f9f;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.circle-add-button {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 50%;
+  color: #9f9f9f;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  cursor: pointer;
+  border: #9f9f9f solid 1.5px;
+}
+.quizformation--container--radios {
+  width: 50%;
+}
+.quizformation--container--choices {
+  gap: '0.5em';
+}
+.quizformation--container--radio {
+  width: auto;
+  display: flex;
+  align-items: baseline;
+}
+.choice--input {
+  width: 246px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  margin: 0.5em;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+}
+.choice--input.correct {
+  background-color: #60b84b;
+  color: #fff;
+}
+.error-message {
+  color: rgb(228, 110, 110);
+}
+
+.circle-add-button {
+  width: 80%;
+  height: 1.5em;
+  margin-left: 1.5em;
+  border: 0;
+  outline: 0;
+  font-size: 1em;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.quizformation--timer {
+  width: 20%;
+}
+
+.timer-button {
+  width: 100%;
+  height: 2.5em;
+  margin-top: 0.5em;
+
+  border: 0;
+  outline: 0;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.timer-button.selected {
+  background-color: red;
+  color: white;
+}
+
+.Link {
+  width: 675px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ededed;
+  margin: 0.8em 0;
+}
+.Toastify__toast-container {
+  /* Set the position to fixed and adjust the positioning */
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  width: auto;
+
+  /* Display flex to make toasts appear horizontally */
+  display: flex;
+  flex-direction: row-reverse; /* Adjust this to 'row' for right-to-left alignment */
+  justify-content: space-between;
+
+  /* Set a maximum width to limit the width of the toasts */
+  max-width: 600px;
+}
+
+.Toastify__toast {
+  /* Add margin to separate individual toasts */
+  margin: 0 4px;
+  background-color: #fff; /* Customize background color */
+  color: #333; /* Customize text color */
+}
+
+.Toastify__toast-body {
+  /* Customize the appearance of the toast message */
+  padding: 8px 12px;
+}

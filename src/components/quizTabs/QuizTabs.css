@@ -1,0 +1,23 @@
+.quiztab--container {
+  width: 201px;
+  height: 82px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0.2em 0.6em;
+  vertical-align: baseline;
+}
+.quiztab--container--content--line1 {
+  margin: 0.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiztab--container--content--line2 {
+  color: #60b84b;
+  font-family: Poppins;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
