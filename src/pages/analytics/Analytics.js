@@ -13,34 +13,45 @@ const Analytics = () => {
 
   useEffect(() => {
     if (token) {
-      fetch(`${BASE_URL}/api/quiz/`)
+      fetch(`${BASE_URL}/api/quiz/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
+          if (data.error) {
+            navigate('/login');
+          }
           setQuizzes(data);
         })
-        .catch((error) => console.error('Error fetching quizzes:', error));
+        .catch((error) => {
+          console.error('Error fetching quizzes:', error);
+          navigate('/login');
+        });
     }
-  }, [token]);
+  }, []);
 
   const analyticsCounters = [
     {
       color: '#FF5D01',
-      count: quizzes.length,
+      count: quizzes?.length,
       primaryText: 'quiz',
       secondaryText: 'created',
     },
     {
       color: '#60B84B',
-      count: quizzes.reduce((total, quiz) => total + quiz.questions.length, 0), // Total number of questions
+      count: quizzes?.reduce((total, quiz) => total + quiz.questions.length, 0), // Total number of questions
       primaryText: 'questions',
       secondaryText: 'created',
     },
     {
       color: '#5076FF',
-      count: quizzes.reduce((total, quiz) => {
+      count: quizzes?.reduce((total, quiz) => {
         return (
           total +
-          quiz.questions.reduce((qMax, question) => {
+          quiz?.questions?.reduce((qMax, question) => {
             return Math.max(
               qMax,
               question.choices.reduce((cMax, choice) => {
@@ -79,7 +90,7 @@ const Analytics = () => {
       <div className="analytic--container--quizes">
         <h3>Trending Quizes</h3>
         <div className="analytic--container--quizes--container">
-          {quizzes.map((quiz, index) => (
+          {quizzes?.map((quiz, index) => (
             <QuizTabs key={index} quiz={quiz} />
           ))}
         </div>

@@ -1,6 +1,6 @@
 .analytic--container {
   width: 85vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #ededed;
   padding: 4em;
   box-sizing: border-box;

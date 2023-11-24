@@ -1,37 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import './QuizAnalysis.css';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const QuizAnalysis = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const quizID = params.id;
   const [quizData, setQuizData] = useState(null);
   const [quizId, setQuizId] = useState('');
   const [metaData, setMetaData] = useState();
+  const token = localStorage.getItem('token');
   useEffect(() => {
-    fetch(`${BASE_URL}/api/quiz/${quizID}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const quizData = data;
-
-        const quizzesWithImpression = quizData.questions.map((question) => {
-          const impression = question.choices.reduce(
-            (totalImpression, choice) => {
-              return totalImpression + choice.userSelection;
-            },
-            0
-          );
-
-          return { ...question, impression };
-        });
-
-        setQuizData({
-          quizName: quizData.quizName,
-          questions: quizzesWithImpression,
-        });
+    if (token) {
+      fetch(`${BASE_URL}/api/quiz/${quizID}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
       })
-      .catch((error) => console.error('Error fetching quiz data:', error));
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            navigate('/login');
+          }
+          const quizData = data;
+
+          const quizzesWithImpression = quizData?.questions?.map((question) => {
+            const impression = question?.choices?.reduce(
+              (totalImpression, choice) => {
+                return totalImpression + choice.userSelection;
+              },
+              0
+            );
+
+            return { ...question, impression };
+          });
+
+          setQuizData({
+            quizName: quizData.quizName,
+            questions: quizzesWithImpression,
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching quiz data:', error);
+          navigate('/login');
+        });
+    }
   }, [quizId]);
 
   if (!quizData) {

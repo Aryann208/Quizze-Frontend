@@ -48,14 +48,18 @@ const Dashboard = () => {
   };
 
   const handleSaveEdit = (quizId) => {
+    console.log('Token:', token);
+
     fetch(`${BASE_URL}/api/quiz/${quizId}`, {
       method: 'PUT',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ quizName: editedQuizName }),
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           setQuizData((prevData) =>
             prevData.map((quiz) =>
@@ -63,11 +67,16 @@ const Dashboard = () => {
             )
           );
           setEditingQuizId(null);
+        } else if (response?.status === 401) {
+          navigate('/login');
         } else {
           console.error('Failed to update the quiz name.');
         }
       })
-      .catch((error) => console.error('Error updating quiz name:', error));
+      .catch((error) => {
+        console.error('Error updating quiz name:', error);
+        navigate('/login');
+      });
   };
 
   const handleEditInputChange = (event) => {
@@ -92,29 +101,46 @@ const Dashboard = () => {
     console.log(quizId);
     fetch(`${BASE_URL}/api/quiz/${quizId}`, {
       method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then((response) => {
         if (response.status === 200) {
           setQuizData((prevData) =>
             prevData.filter((quiz) => quiz._id !== quizId)
           );
+        } else if (response?.status === 401) {
+          navigate('/login');
         } else {
           console.error('Failed to delete the quiz.');
         }
       })
-      .catch((error) => console.error('Error deleting quiz:', error));
+      .catch((error) => {
+        console.error('Error deleting quiz:', error);
+        navigate('/login');
+      });
     setDeletedQuiz({ bool: false, id: '' });
   };
 
   const isEditing = (quizId) => quizId === editingQuizId;
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/quiz/`)
+    fetch(`${BASE_URL}/api/quiz/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        const quizzesWithImpression = data.map((quiz) => {
-          const maxImpression = quiz.questions.reduce((max, question) => {
-            const questionImpression = question.choices.reduce(
+        if (data.error) {
+          navigate('/login');
+        }
+        const quizzesWithImpression = data?.map((quiz) => {
+          const maxImpression = quiz?.questions?.reduce((max, question) => {
+            const questionImpression = question?.choices?.reduce(
               (questionMax, choice) =>
                 Math.max(questionMax, choice.userSelection),
               0
@@ -126,7 +152,10 @@ const Dashboard = () => {
 
         setQuizData(quizzesWithImpression);
       })
-      .catch((error) => console.error('Error fetching quiz data:', error));
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error);
+        navigate('/login');
+      });
   }, []);
 
   if (!token) {

@@ -378,16 +378,23 @@ const QuizCreation = () => {
       };
       console.log('quizData', quizData);
       console.log('BASE_URL', BASE_URL);
-      axios
-        .post(`${BASE_URL}/api/quiz/create`, quizData)
-        .then((response) => {
-          console.log('Quiz created successfully:', response.data);
-          setFinalQuizID(response.data._id);
-          setQuizSaved(true);
+      if (token) {
+        axios
+          .post(`${BASE_URL}/api/quiz/create`, quizData,{
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
         })
-        .catch((error) => {
-          console.error('Error creating quiz:', error);
-        });
+          .then((response) => {
+            console.log('Quiz created successfully:', response.data);
+            setFinalQuizID(response.data._id);
+            setQuizSaved(true);
+          })
+          .catch((error) => {
+            console.error('Error creating quiz:', error);
+          });
+      }
     }
   };
 
