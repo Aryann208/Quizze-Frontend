@@ -16,7 +16,7 @@ Quizze is a React.js application that allows users to create custom quizzes with
 
    ```bash
    git clone https://github.com/Aryann208/Quizze-Frontend.git
-   cd quizze
+   cd Quizze-Frontend
    
 2. **Navigate to the client directory:**
 
