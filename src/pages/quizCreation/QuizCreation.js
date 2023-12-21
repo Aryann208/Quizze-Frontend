@@ -445,7 +445,7 @@ const QuizCreation = () => {
           )}
 
           <div className="quizcreation--container--final--buttons">
-            <button className="option--button">Q&A</button>
+            <button className="option--button">Cancel</button>
             <button
               onClick={handleContinueButtonClick}
               className="option--button--green"
